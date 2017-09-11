@@ -12,6 +12,8 @@ function doCompile {
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
     echo "Skipping deploy; just doing a build."
     doCompile
+    cd out
+    git diff
     exit 0
 fi
 
@@ -57,7 +59,7 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 #    exit 0
 #fi
 
-# Print the diff for debug / PR users
+# Print the diff
 git diff
 
 # Commit the "changes", i.e. the new version.

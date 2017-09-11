@@ -5,7 +5,7 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="files"
 
 function doCompile {
-    python main.py dumpXML=True
+    python main.py
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -56,6 +56,9 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 #    echo "No changes to the output on this push; exiting."
 #    exit 0
 #fi
+
+# Print the diff for debug / PR users
+git diff
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.

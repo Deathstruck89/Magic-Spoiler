@@ -6,16 +6,15 @@ TARGET_BRANCH="files"
 
 function doCompile {
     python main.py
+    cd out
+    ls
+    git diff
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
     echo "Skipping deploy; just doing a build."
     doCompile
-    pwd
-    echo "We're post-run"
-    cd out
-    git diff
     exit 0
 fi
 
@@ -36,10 +35,6 @@ rm -rf out/**/* || exit 0
 
 # Run our compile script
 doCompile
-
-echo TRAVIS_PULL_REQUEST ${TRAVIS_PULL_REQUEST}
-echo TRAVIS_SECURE_ENV_VARS ${TRAVIS_SECURE_ENV_VARS}
-echo TRAVIS_EVENT_TYPE ${TRAVIS_EVENT_TYPE}
 
 # Don't push to our branch for PRs.
 #if [ "${ghToken:-false}" != "false" ]; then

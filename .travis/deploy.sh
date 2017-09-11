@@ -12,6 +12,8 @@ function doCompile {
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
     echo "Skipping deploy; just doing a build."
     doCompile
+    pwd
+    echo "We're post-run"
     cd out
     git diff
     exit 0

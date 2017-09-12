@@ -22,7 +22,7 @@ Noticed an error?  Check out our [Contributing file](https://github.com/Cockatri
 pip install -r requirements.txt
 ```
 
-### Usage ###
+### Usage ### 
  
 ```
 $> python main.py

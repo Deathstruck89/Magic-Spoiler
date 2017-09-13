@@ -15,7 +15,7 @@ function getBranch {
     SHA=`git rev-parse --verify HEAD`
     
     # Clone the existing gh-pages for this repo into out/
-    # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+    # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deploy)
     git clone $REPO out
     cd out
     git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
@@ -81,7 +81,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     getBranch
     doCompile
     cd out
-    git diff files spoiler.xml --unified=1
+    git diff --unified=1 files spoiler.xml
     git diff files spoiler.json
     exit 0
 fi

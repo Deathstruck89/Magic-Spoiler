@@ -81,7 +81,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     getBranch
     doCompile
     cd out
-    git diff --unified=1 --src-prefix=local --dst-prefix=remote files spoiler.xml
+    git diff --unified=1 --src-prefix=local/ --dst-prefix=remote/ files spoiler.xml
     git diff files spoiler.json
     exit 0
 fi

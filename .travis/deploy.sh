@@ -81,7 +81,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     getBranch
     doCompile
     cd out
-    git diff
+    git diff files spoiler.xml
     exit 0
 fi
 

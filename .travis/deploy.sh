@@ -11,8 +11,10 @@ function doCompile {
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
     echo "Skipping deploy; just doing a build."
-    doCompile
-    exit 0
+    echo 'Running script...' && echo -en 'travis_fold:start:main_script\\r'		#  
+    doCompile																	# fold for all output from main.py script
+    echo -en 'travis_fold:end:main_script\\r'									#
+exit 0
 fi
 
 # Save some useful information
